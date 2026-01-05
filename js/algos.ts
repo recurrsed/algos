@@ -99,7 +99,7 @@ function quickSortMid(start: number, end: number, arr: number[]): number[] {
   if (start < end) {
     const p = partitionMid(start, end, arr);
 
-    if (p < start - 1) {
+    if (start < p - 1) {
       quickSortMid(start, p - 1, arr);
     }
 
@@ -277,7 +277,7 @@ function singleNumber(nums: number[]): number {
   for (let i = 0; i < nums.length; i++) {
     const bsres = binarySearch(
       nums.slice(0, i).concat(nums.slice(i + 1)),
-      nums[i]
+      nums[i],
     );
 
     if (bsres === -1) {
@@ -406,7 +406,7 @@ function isPalindrome(head: ListNode | undefined): boolean {
 
 function removeElements(
   head: ListNode | undefined,
-  val: number
+  val: number,
 ): ListNode | undefined {
   if (!head) {
     return undefined;
@@ -446,7 +446,7 @@ function deleteDuplicates(head: ListNode | undefined): ListNode | undefined {
 
 function mergeTwoLists(
   list1: ListNode | undefined,
-  list2: ListNode | undefined
+  list2: ListNode | undefined,
 ): ListNode | undefined {
   if (!list1) return list2;
   if (!list2) return list1;
@@ -632,7 +632,7 @@ function hasPathSum(root: TreeNode | undefined, targetSum: number): boolean {
 
 function mergeTrees(
   root1: TreeNode | undefined,
-  root2: TreeNode | undefined
+  root2: TreeNode | undefined,
 ): TreeNode | undefined {
   if (root1 && root2) {
     const root = new TreeNode(root1.val + root2.val);
@@ -664,17 +664,17 @@ function invertTree(root: TreeNode | undefined): TreeNode | undefined {
 let arr = [43, 231, 43, 12];
 let head = new ListNode(
   1,
-  new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3))))
+  new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(3)))),
 );
 const root = new TreeNode(
   3,
   new TreeNode(9),
-  new TreeNode(20, new TreeNode(15), new TreeNode(7))
+  new TreeNode(20, new TreeNode(15), new TreeNode(7)),
 );
 const root2 = new TreeNode(
   3,
   new TreeNode(9),
-  new TreeNode(20, new TreeNode(15), new TreeNode(7))
+  new TreeNode(20, new TreeNode(15), new TreeNode(7)),
 );
 
 // 12-hr min diff
@@ -755,7 +755,7 @@ function StringChallenge(strArr: string[]): number {
 
       //  + 12 : 0 + currHr;
       const diff = Math.abs(
-        currHrFormatted * 60 + currMin - (nextHrFormatted * 60 + nextMin)
+        currHrFormatted * 60 + currMin - (nextHrFormatted * 60 + nextMin),
       );
 
       if (diff < minDiff) {
